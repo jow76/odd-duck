@@ -1,0 +1,87 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(113, 97, 128);
+    color: antiquewhite;
+}
+
+main{
+    width: 1400px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: 250px 4fr;
+    grid-template-rows: 6.5rem 10rem 20rem 40%;
+}
+
+h1{
+    font-size: 3rem;
+    z-index: 1;
+    color: rgb(245, 245, 174);
+    line-height: 0.8;
+    margin: 3rem 0 1rem;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+section{
+    background-color: rgb(65, 54, 75);
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding:2rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+section img{
+    width:420px;
+    height:360px;
+    object-fit: cover;
+}
+
+section img:hover{
+    border: 5px solid rgb(255, 0, 0);
+    cursor:pointer
+}
+
+section.no-voting img:hover{
+    border: 5px solid transparent;
+    pointer-events: none;
+}
+
+section+div{
+    background-color: rgb(113, 97, 128);
+    color: rgb(113, 97, 128);
+    padding: 0.5rem 1rem;
+    width: max-content;
+    height: max-content;
+    font-size: 1.5rem;
+    pointer-events: none;
+}
+
+section + div.clicks-allowed{
+    background-color:aqua;
+    color: black;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+section + div.clicks-allowed:hover{
+    background-color:aquamarine;
+}
+
+ul{
+    margin:1rem 0;
+    width: max-content;
+}
+
+li{
+    line-height: 1.6;
+}
