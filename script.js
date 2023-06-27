@@ -23,11 +23,14 @@ function Product(name, src){
     allProducts.push(this);
 }
 
+let previousProducts = []
+
 function renderProducts(){
     let prod1 = getRandomNumber();
     let prod2 = getRandomNumber();
     let prod3 = getRandomNumber();
-    while(prod1 === prod2 || prod1 === prod3 || prod2 === prod3){
+    while(prod1 === prod2 || prod1 === prod3 || prod2 === prod3 || previousProducts.includes(prod1) || previousProducts.includes(prod2) || previousProducts.includes(prod3)){
+        prod1 = getRandomNumber();
         prod2 = getRandomNumber();
         prod3 = getRandomNumber();
     }
@@ -40,6 +43,9 @@ function renderProducts(){
     allProducts[prod1].views++;
     allProducts[prod2].views++;
     allProducts[prod3].views++;
+
+    previousProducts = []
+    previousProducts.push(prod1, prod2, prod3)
 }
 
 function handleClick(event){
