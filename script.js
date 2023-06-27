@@ -58,7 +58,7 @@ function handleClick(event){
         if(clicks === maxClicksAllowed){
             productContainer.removeEventListener("click", handleClick);
             productContainer.className = "no-voting";
-            resultsButton.addEventListener("click", renderResults)
+            resultsButton.addEventListener("click", renderChart)
             resultsButton.className = "clicks-allowed";
         }
         else{
@@ -74,6 +74,39 @@ function renderResults(){
         li.textContent = `${allProducts[i].name} had ${allProducts[i].views} views and was picked ${allProducts[i].votes} times.`
         ul.appendChild(li)
     }
+    resultsButton.className = "clicks-not-allowed";
+}
+
+function renderChart(){
+    const prodName = [];
+    const prodViews = [];
+    const prodVotes = [];
+    for(let i=0; i<allProducts.length; i++){
+        prodName.push(allProducts[i].name)
+        prodViews.push(allProducts[i].views)
+        prodVotes.push(allProducts[i].votes)
+    }
+    const data = {
+        labels: prodName,
+        datasets: [
+            {
+                label: "Views",
+                data: prodViews,
+                backgroundColor: ["#1ac8d5"],
+            },
+            {
+                label: "Votes",
+                data: prodVotes,
+                backgroundColor: ["#f8fbbf"],
+            },
+        ]
+    }
+    const config = {
+        type: "bar",
+        data: data,
+    }
+    const productChart = document.getElementById("chart")
+    const resultsChart = new Chart(productChart, config)
     resultsButton.className = "clicks-not-allowed";
 }
 

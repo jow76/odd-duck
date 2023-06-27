@@ -85,3 +85,13 @@ ul{
 li{
     line-height: 1.6;
 }
+
+canvas{
+    width: 800px;
+    height: 500px;
+}
+
+#chartDiv{
+    width:700px;
+    height:500px;
+}
