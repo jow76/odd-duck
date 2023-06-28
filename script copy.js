@@ -74,10 +74,11 @@ function handleClick(event){
 }
 
 function renderResults(){
+    let ul = document.querySelector("ul")
     for (let i=0; i <allProducts.length; i++){
-        localStorage.setItem("name",allProducts[i].name)
-        localStorage.setItem("views",allProducts[i].views)
-        localStorage.setItem("votes",allProducts[i].votes)
+        let li = document.createElement("li")
+        li.textContent = `${allProducts[i].name} had ${allProducts[i].views} views and was picked ${allProducts[i].votes} times.`
+        ul.appendChild(li)
     }
     resultsButton.className = "clicks-not-allowed";
 }
@@ -113,42 +114,27 @@ function renderChart(){
     const productChart = document.getElementById("chart")
     const resultsChart = new Chart(productChart, config)
     resultsButton.className = "clicks-not-allowed";
-    setLocalStorage()
 }
 
+const bag = new Product("bag", "images/bag.jpg")
+const banana = new Product("banana","images/banana.jpg")
+const bathroom = new Product("bathroom", "images/bathroom.jpg")
+const boots = new Product("boots","images/boots.jpg")
+const breakfast = new Product("breakfast", "images/breakfast.jpg")
+const bubblegum = new Product("bubblegum","images/bubblegum.jpg")
+const chair = new Product("chair","images/chair.jpg")
+const cthulhu = new Product("cthulhu", "images/cthulhu.jpg")
+const dogduck = new Product ("dog-duck","images/dog-duck.jpg")
+const dragon = new Product("dragon","images/dragon.jpg")
+const pen = new Product("pen","images/pen.jpg")
+const petsweep = new Product("pet-sweep","images/pet-sweep.jpg")
+const scissors = new Product("scissors","images/scissors.jpg")
+const shark = new Product("shark","images/shark.jpg")
+const sweep = new Product("sweep","images/sweep.png")
+const tauntaun = new Product("tauntaun","images/tauntaun.jpg")
+const unicorn = new Product("unicorn", "images/unicorn.jpg")
+const watercan = new Product("water-can","images/water-can.jpg")
+const wineglass = new Product("wine-glass","images/wine-glass.jpg")
 
-
-function setLocalStorage(){
-    localStorage.setItem("products", JSON.stringify(allProducts))
-}
-
-function checkLocalStorage(){
-    const localProducts = JSON.parse(localStorage.getItem("products"))
-    if(localProducts){
-        allProducts = localProducts;
-    }
-    else{
-        const bag = new Product("bag", "images/bag.jpg")
-        const banana = new Product("banana","images/banana.jpg")
-        const bathroom = new Product("bathroom", "images/bathroom.jpg")
-        const boots = new Product("boots","images/boots.jpg")
-        const breakfast = new Product("breakfast", "images/breakfast.jpg")
-        const bubblegum = new Product("bubblegum","images/bubblegum.jpg")
-        const chair = new Product("chair","images/chair.jpg")
-        const cthulhu = new Product("cthulhu", "images/cthulhu.jpg")
-        const dogduck = new Product ("dog-duck","images/dog-duck.jpg")
-        const dragon = new Product("dragon","images/dragon.jpg")
-        const pen = new Product("pen","images/pen.jpg")
-        const petsweep = new Product("pet-sweep","images/pet-sweep.jpg")
-        const scissors = new Product("scissors","images/scissors.jpg")
-        const shark = new Product("shark","images/shark.jpg")
-        const sweep = new Product("sweep","images/sweep.png")
-        const tauntaun = new Product("tauntaun","images/tauntaun.jpg")
-        const unicorn = new Product("unicorn", "images/unicorn.jpg")
-        const watercan = new Product("water-can","images/water-can.jpg")
-        const wineglass = new Product("wine-glass","images/wine-glass.jpg")
-    }
-}
-checkLocalStorage();
 renderProducts();
 productContainer.addEventListener("click", handleClick)
